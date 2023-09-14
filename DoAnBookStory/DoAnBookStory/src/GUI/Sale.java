@@ -74,6 +74,8 @@ public class Sale extends javax.swing.JDialog implements ActionListener{
         txtQuanaty = new javax.swing.JTextField();
         btnPlus = new javax.swing.JButton();
         btnMinus = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        lbPrice = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -97,6 +99,11 @@ public class Sale extends javax.swing.JDialog implements ActionListener{
         btnSale.setForeground(new java.awt.Color(255, 255, 255));
         btnSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/MUA (2).png"))); // NOI18N
         btnSale.setText("MUA");
+        btnSale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaleActionPerformed(evt);
+            }
+        });
 
         btnCancel.setBackground(new java.awt.Color(255, 0, 0));
         btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -147,6 +154,10 @@ public class Sale extends javax.swing.JDialog implements ActionListener{
         btnMinus.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnMinus.setText("-");
 
+        jLabel5.setText("GIÁ:");
+
+        lbPrice.setText(" ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,29 +165,31 @@ public class Sale extends javax.swing.JDialog implements ActionListener{
             .addComponent(lbTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbImage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnMinus)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtQuanaty, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnPlus)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbImage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnSale, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(btnMinus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtQuanaty, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPlus)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnSale, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -196,17 +209,23 @@ public class Sale extends javax.swing.JDialog implements ActionListener{
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSale, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(34, 34, 34))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbImage, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(lbPrice))
+                        .addGap(10, 10, 10)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtQuanaty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPlus)
-                            .addComponent(btnMinus))))
-                .addGap(34, 34, 34))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtQuanaty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnPlus))
+                            .addComponent(btnMinus))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -219,6 +238,10 @@ public class Sale extends javax.swing.JDialog implements ActionListener{
     private void btnPlusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPlusActionPerformed
+
+    private void btnSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,9 +352,11 @@ public class Sale extends javax.swing.JDialog implements ActionListener{
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbImage;
+    private javax.swing.JLabel lbPrice;
     private javax.swing.JLabel lbTitle;
     private javax.swing.JTextArea txtAddress;
     private javax.swing.JTextArea txtDetails;
@@ -354,6 +379,7 @@ public class Sale extends javax.swing.JDialog implements ActionListener{
         this.txtDetails.setForeground(Color.red);
         System.out.println();
         this.txtAddress.setText(this.homeCustomer.getPreCus().getDiaChi());
+        this.lbPrice.setText(this.book.getPrice()+" VNĐ");
         
     }
 
@@ -389,7 +415,7 @@ public class Sale extends javax.swing.JDialog implements ActionListener{
 //            try {
                 int x=0;
                 try {
-                 if(Integer.parseInt(this.txtQuanaty.getText())<=0 )
+                 if(Float.parseFloat(this.txtQuanaty.getText())<=0 )
                 {
                     JOptionPane.showMessageDialog(rootPane,"Số Lượng phải lớn hơn 0!");
                     
@@ -397,10 +423,10 @@ public class Sale extends javax.swing.JDialog implements ActionListener{
                   
                  this.book=this.homeCustomer.getSaleBook();
                  System.out.println(book.getQuanaty());
-                 if(Integer.parseInt(this.txtQuanaty.getText())<=Integer.parseInt(this.book.getQuanaty().trim()))
+                 if(Float.parseFloat(this.txtQuanaty.getText())<=Float.parseFloat(this.book.getQuanaty().trim()))
                  {
-                     this.book.setQuanaty(Integer.parseInt(this.book.getQuanaty().trim())-
-                         Integer.parseInt(this.txtQuanaty.getText().trim())+"");
+//                     this.book.setQuanaty(Integer.parseInt(this.book.getQuanaty().trim())-
+//                         Integer.parseInt(this.txtQuanaty.getText().trim())+"");
                  }
                  
             } catch (Exception ex) {
@@ -408,12 +434,12 @@ public class Sale extends javax.swing.JDialog implements ActionListener{
                     x=-1;
             }
                 ///
-                    int bookStore=0;
+                    Float bookStore=0f;
                     for(DTO.Book b: books)
                     {
                         if(this.book.getID().equals(b.getID()))
                         {
-                            bookStore=Integer.parseInt(b.getQuanaty());
+                            bookStore=Float.parseFloat(b.getQuanaty());
                             break;
                         }
                     }
@@ -424,18 +450,27 @@ public class Sale extends javax.swing.JDialog implements ActionListener{
                 if(c.isNumber(this.book.getQuanaty()) && x!=-1 && Integer.parseInt(this.txtQuanaty.getText())>0  
                         && Integer.parseInt(this.txtQuanaty.getText())<=bookStore)
                 {
-                     BillHomeCustomer billHomeCustomer= new BillHomeCustomer(
-                         this.book.getID(),
-                         this.homeCustomer.getPreCus().getMaKH()
-                         , txtAddress.getText(),
-                         txtQuanaty.getText(), 
-                         this.book.getQuanaty(), 
-                         Integer.parseInt(this.txtQuanaty.getText())*Integer.parseInt(this.book.getPrice())+"");
-                 DTO.upDateId.updateIDBillCustomer(billHomeCustomer);
-                 DAL.EditDataToSQL.editDataBook(this.book);
-                 DAL.WriteDataToSQL.insertDataBillHomeCusomer(billHomeCustomer);
-                 dispose();
-                 JOptionPane.showMessageDialog(rootPane, "Cảm Ơn Bạn Đã Đặt Hàng!");
+                    //>>>>>
+//                     BillHomeCustomer billHomeCustomer= new BillHomeCustomer(
+//                         this.book.getID(),
+//                         this.homeCustomer.getPreCus().getMaKH()
+//                         , txtAddress.getText(),
+//                         txtQuanaty.getText(), 
+//                         this.book.getQuanaty(), 
+//                         Integer.parseInt(this.txtQuanaty.getText())*Integer.parseInt(this.book.getPrice())+"");
+//                 DTO.upDateId.updateIDBillCustomer(billHomeCustomer);
+//                 DAL.EditDataToSQL.editDataBook(this.book);
+//                 DAL.WriteDataToSQL.insertDataBillHomeCusomer(billHomeCustomer);
+//                 dispose();
+//                 JOptionPane.showMessageDialog(rootPane, "Cảm Ơn Bạn Đã Đặt Hàng!");
+                    //<<<<
+                    
+                   receiveOderDialog rc = new receiveOderDialog(homeCustomer, rootPaneCheckingEnabled,this.homeCustomer.getPreCus(),this.book,this.txtQuanaty.getText());
+                   dispose();
+                   rc.setVisible(true);
+                   
+                    
+                    
                 }
                 
 //            } catch (Exception ex) {

@@ -351,6 +351,7 @@ public class homeManage extends javax.swing.JFrame implements ActionListener {
         pan_doanhThuTheoThang = new javax.swing.JPanel();
         pan_TT = new javax.swing.JPanel();
         pan_bieuDoTron = new javax.swing.JPanel();
+        jButton9 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MANAGE");
@@ -362,6 +363,11 @@ public class homeManage extends javax.swing.JFrame implements ActionListener {
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jTabbedPane1.setOpaque(true);
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
 
         MANAGE_NHANVIEN.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -2479,6 +2485,17 @@ public class homeManage extends javax.swing.JFrame implements ActionListener {
 
         jTabbedPane1.addTab("    THÔNG KÊ   ", new javax.swing.ImageIcon(getClass().getResource("/Icon/icons8-statistics-80.png")), MANAGE_THONGKE); // NOI18N
 
+        jButton9.setBackground(new java.awt.Color(255, 0, 0));
+        jButton9.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("NHẤP VÀO TUI ĐỂ ĐĂNG XUẤT!");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
+        jTabbedPane1.addTab("LOG OUT", jButton9);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -3097,6 +3114,16 @@ String keySapXepNCC = "ID";
             evt.consume();
         }
     }//GEN-LAST:event_txt_BankAccountNccKeyTyped
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        dispose();
+        LoginFRM l = new LoginFRM();
+        l.setVisible(true);
+    }//GEN-LAST:event_jButton9MouseClicked
 
     /**
      * @param args the command line arguments
@@ -4868,6 +4895,7 @@ String keySapXepNCC = "ID";
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JButton jButton_TimkiemNcc;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
@@ -5571,11 +5599,15 @@ String keySapXepNCC = "ID";
         }
         Staff sta = new Staff();
         for (Staff s : staffs) {
-            if (s.getAccount().getAccount().equals(accPre.getAccount())) {
+            if (s.getAccountStr().equals(accPre.getAccount())) {
                 sta = s;
+                
                 break;
             }
+            System.out.println(s.getAccountStr()+"!");
         }
+        System.out.println(sta.getAddress());
+             
         this.txtAddress.setText(sta.getAddress());
         this.txtBankAccount.setText(sta.getBankAccount());
         this.txtBankName.setText(sta.getBankName());
